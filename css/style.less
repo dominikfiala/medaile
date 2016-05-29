@@ -1,0 +1,69 @@
+@media screen {
+  // Layout
+  html {
+    height: 100%;
+  }
+
+  #app {
+    display: flex;
+    height: 100vh;
+
+    #wrap {
+      flex: 1;
+      display: flex;
+
+      #items {
+        flex: 1;
+        overflow-y: auto;
+        user-select: none;
+
+        .item {
+          border-radius: 10px;
+          width: 200px;
+          height: 200px;
+          margin: 15px;
+          padding: 10px;
+          cursor: pointer;
+          box-sizing: content-box;
+
+          &.active {
+            background: rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+
+      #controls {
+        width: 325px;
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+      }
+    }
+  }
+
+  // Bootstrap tweaks
+  .normal-weight {
+    font-weight: normal;
+  }
+}
+
+// Item styling
+.font-open-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+.font-slabo {
+  font-family: 'Slabo 27px', serif;
+}
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
+}
+
+@media print {
+  #controls {
+    display: none;
+  }
+
+  .item {
+    margin: 5mm;
+  }
+}

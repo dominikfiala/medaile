@@ -1,0 +1,67 @@
+@media screen {
+  html {
+    height: 100%;
+  }
+  #app {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100vh;
+  }
+  #app #wrap {
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  #app #wrap #items {
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    overflow-y: auto;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+  #app #wrap #items .item {
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    margin: 15px;
+    padding: 10px;
+    cursor: pointer;
+    box-sizing: content-box;
+  }
+  #app #wrap #items .item.active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  #app #wrap #controls {
+    width: 325px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+  .normal-weight {
+    font-weight: normal;
+  }
+}
+.font-open-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+.font-slabo {
+  font-family: 'Slabo 27px', serif;
+}
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
+}
+@media print {
+  #controls {
+    display: none;
+  }
+  .item {
+    margin: 5mm;
+  }
+}

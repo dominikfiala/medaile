@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medaile</title>
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700|Slabo+27px|Oswald:400,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <meta property="og:image" content="http://medaile.sprtec-boskovice.cz/screenshot.png" />
+</head>
+
+<body>
+  <template id="svg-circle-text">
+    <defs>
+      <path id="path-{{data.key}}" transform="rotate({{data.circle.rotate}} 50 50)" d="M 50 50
+      m -{{data.circle.diam/2}}, 0
+      a {{data.circle.diam/2}},{{data.circle.diam/2}} 0 1,{{data.circle.outer}} {{data.circle.diam}},0
+      a {{data.circle.diam/2}},{{data.circle.diam/2}} 0 1,{{data.circle.outer}} -{{data.circle.diam}},0" />
+    </defs>
+    <text font-size="{{data.text.size}}" text-anchor="middle">
+      <textPath xlink:href="#path-{{data.key}}" startOffset="50%" alignment-baseline="middle">
+        {{data.text.text}}
+      </textPath>
+    </text>
+  </template>
+
+  <template id="item-template">
+    <style type="text/css" media="print">{{print_style}}</style>
+    <svg class="font-{{item.font}} item item-{{index}} {{active ? 'active' : ''}}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" @click="makeActive(index)">
+      <circle r="50" cy="50" cx="50" stroke="#000" stroke-width="0.5" fill="none" />
+      <circle r="48" cy="50" cx="50" stroke="#000" stroke-width="1" fill="none" />
+
+      <svg_circle_text :data="top_text"></svg_circle_text>
+
+      <foreignObject x="0" y="0" width="100" height="100">
+        <table v-bind:style="{ width: '100%', height: '100%' }">
+          <tr>
+            <td v-bind:style="{ fontSize: item.middle.size + 'px', lineHeight: '1.2', textAlign: 'center', color: '#000'}">
+              {{{item.middle.text|nl2br}}}
+            </td>
+          </tr>
+        </table>
+      </foreignObject>
+
+      <svg_circle_text :data="bottom_text"></svg_circle_text>
+    </svg>
+  </template>
+
+  <div id="app">
+    <div id="wrap">
+      <div id="controls">
+        <!-- <form> -->
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="item-size">Průměr položky</label>
+                <div class="input-group">
+                  <input v-model="items[active].size" type="number" class="form-control" id="item-size">
+                  <div class="input-group-addon">mm</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="item-font">Písmo</label>
+                <select v-model="items[active].font" class="form-control" id="item-font">
+                  <option value="open-sans">Open Sans</option>
+                  <option value="oswald">Oswald</option>
+                  <option value="slabo">Slabo</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="item-top-text">Horní text</label>
+                <input v-model="items[active].top.text" class="form-control" id="item-top-text" type="text" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="item-top-size" class="normal-weight">Velikost</label>
+                <div class="input-group">
+                  <input v-model="items[active].top.size" type="number" step="0.5" class="form-control" id="item-top-size">
+                  <div class="input-group-addon">%</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="item-top-position" class="normal-weight">Umístění</label>
+                <div class="input-group">
+                  <input v-model="items[active].top.position" type="number" class="form-control" id="item-top-position">
+                  <div class="input-group-addon">%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="item-middle-text">Hlavní text</label>
+                <textarea v-model="items[active].middle.text" class="form-control" id="item-middle-text"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="item-middle-size" class="normal-weight">Velikost</label>
+                <div class="input-group">
+                  <input v-model="items[active].middle.size" type="number" step="0.5" class="form-control" id="item-middle-size">
+                  <div class="input-group-addon">%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="item-bottom-text">Spodní text</label>
+                <input v-model="items[active].bottom.text" class="form-control" id="item-bottom-text" type="text" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="item-bottom-size" class="normal-weight">Velikost</label>
+                <div class="input-group">
+                  <input v-model="items[active].bottom.size" type="number" step="0.5" class="form-control" id="item-bottom-size">
+                  <div class="input-group-addon">%</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="item-bottom-position" class="normal-weight">Umístění</label>
+                <div class="input-group">
+                  <input v-model="items[active].bottom.position" type="number" class="form-control" id="item-bottom-position">
+                  <div class="input-group-addon">%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <label>Položka</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+            <p>
+              <button @click="duplicateItem(active)" type="button" class="btn btn-success">Duplikovat</button>
+              <button @click="deleteItem(active)" v-show="items.length > 1" type="button" class="btn btn-danger">Smazat</button>
+            </p>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <label>Dokument</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <p>
+                <button @click="printSheet" type="button" class="btn btn-primary">Vytisknout</button>
+              </p>
+            </div>
+          </div>
+        <!-- </form> -->
+      </div>
+
+      <div id="items">
+        <item v-for="item in items" :item="item" :index="$index" :active="$index === active"></item>
+      </div>
+    </div>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js'></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>
