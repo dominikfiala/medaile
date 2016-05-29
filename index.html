@@ -19,7 +19,7 @@
       a {{data.circle.diam/2}},{{data.circle.diam/2}} 0 1,{{data.circle.outer}} {{data.circle.diam}},0
       a {{data.circle.diam/2}},{{data.circle.diam/2}} 0 1,{{data.circle.outer}} -{{data.circle.diam}},0" />
     </defs>
-    <text font-size="{{data.text.size}}" text-anchor="middle">
+    <text font-size="{{data.text.size}}" text-anchor="middle" letter-spacing="{{data.text.spacing}}em">
       <textPath xlink:href="#path-{{data.key}}" startOffset="50%" alignment-baseline="middle">
         {{data.text.text}}
       </textPath>
@@ -37,7 +37,7 @@
       <foreignObject x="0" y="{{item.middle.position-50}}" width="100" height="100">
         <table v-bind:style="{ width: '100%', height: '100%' }">
           <tr>
-            <td v-bind:style="{ fontSize: item.middle.size + 'px', lineHeight: '1.2', textAlign: 'center', color: '#000'}">
+            <td v-bind:style="{ fontSize: item.middle.size + 'px', lineHeight: '1.2', textAlign: 'center', color: '#000', letterSpacing: item.middle.spacing + 'em' }">
               {{{item.middle.text|nl2br}}}
             </td>
           </tr>
@@ -86,22 +86,22 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-4">
               <div class="form-group">
                 <label for="item-top-size" class="normal-weight">Velikost</label>
-                <div class="input-group">
-                  <input v-model="items[active].top.size" type="number" step="0.5" class="form-control" id="item-top-size">
-                  <div class="input-group-addon">%</div>
-                </div>
+                <input v-model="items[active].top.size" type="number" step="0.5" min="1" max="100" class="form-control" id="item-top-size">
               </div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-4">
               <div class="form-group">
                 <label for="item-top-position" class="normal-weight">Umístění</label>
-                <div class="input-group">
-                  <input v-model="items[active].top.position" type="number" class="form-control" id="item-top-position">
-                  <div class="input-group-addon">%</div>
-                </div>
+                <input v-model="items[active].top.position" type="number" min="0" max="100" class="form-control" id="item-top-position">
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="form-group">
+                <label for="item-top-spacing" class="normal-weight">Prostrkání</label>
+                <input v-model="items[active].top.spacing" type="number" step="0.01" min="-0.25" max="0.25" class="form-control" id="item-top-spacing">
               </div>
             </div>
           </div>
@@ -115,22 +115,22 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-4">
               <div class="form-group">
                 <label for="item-middle-size" class="normal-weight">Velikost</label>
-                <div class="input-group">
-                  <input v-model="items[active].middle.size" type="number" step="0.5" class="form-control" id="item-middle-size">
-                  <div class="input-group-addon">%</div>
-                </div>
+                <input v-model="items[active].middle.size" type="number" step="0.5" min="1" max="100" class="form-control" id="item-middle-size">
               </div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-4">
               <div class="form-group">
                 <label for="item-middle-position" class="normal-weight">Umístění</label>
-                <div class="input-group">
-                  <input v-model="items[active].middle.position" type="number" class="form-control" id="item-middle-position">
-                  <div class="input-group-addon">%</div>
-                </div>
+                <input v-model="items[active].middle.position" type="number" min="0" max="100" class="form-control" id="item-middle-position">
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="form-group">
+                <label for="item-middle-spacing" class="normal-weight">Prostrkání</label>
+                <input v-model="items[active].middle.spacing" type="number" step="0.01" min="-0.25" max="0.25" class="form-control" id="item-middle-spacing">
               </div>
             </div>
           </div>
@@ -144,22 +144,22 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-4">
               <div class="form-group">
                 <label for="item-bottom-size" class="normal-weight">Velikost</label>
-                <div class="input-group">
-                  <input v-model="items[active].bottom.size" type="number" step="0.5" class="form-control" id="item-bottom-size">
-                  <div class="input-group-addon">%</div>
-                </div>
+                <input v-model="items[active].bottom.size" type="number" step="0.5" class="form-control" id="item-bottom-size">
               </div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-4">
               <div class="form-group">
                 <label for="item-bottom-position" class="normal-weight">Umístění</label>
-                <div class="input-group">
-                  <input v-model="items[active].bottom.position" type="number" class="form-control" id="item-bottom-position">
-                  <div class="input-group-addon">%</div>
-                </div>
+                <input v-model="items[active].bottom.position" type="number" class="form-control" id="item-bottom-position">
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="form-group">
+                <label for="item-bottom-spacing" class="normal-weight">Prostrkání</label>
+                <input v-model="items[active].bottom.spacing" type="number" step="0.01" min="-0.25" max="0.25" class="form-control" id="item-bottom-spacing">
               </div>
             </div>
           </div>

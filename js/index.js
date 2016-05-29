@@ -15,17 +15,20 @@ if(window.localStorage) {
       top: {
         text: 'Horní text',
         size: 10,
-        position: 72
+        position: 72,
+        spacing: 0
       },
       middle: {
         text: "1",
         size: 50,
-        position: 50
+        position: 50,
+        spacing: 0
       },
       bottom: {
         text: 'Spodní text',
         size: 10,
-        position: 78
+        position: 78,
+        spacing: 0
       }
     }]
   }
@@ -49,7 +52,8 @@ var item = Vue.component('item', {
         key: 'top-' + this.index,
         text: {
           text: this.item.top.text,
-          size: this.item.top.size
+          size: this.item.top.size,
+          spacing: this.item.top.spacing
         },
         circle: {
           diam: this.item.top.position,
@@ -63,7 +67,8 @@ var item = Vue.component('item', {
         key: 'bottom-' + this.index,
         text: {
           text: this.item.bottom.text,
-          size: this.item.bottom.size
+          size: this.item.bottom.size,
+          spacing: this.item.bottom.spacing
         },
         circle: {
           diam: this.item.bottom.position,
@@ -116,4 +121,3 @@ if(store) {
     deep: true
   })
 }
-
