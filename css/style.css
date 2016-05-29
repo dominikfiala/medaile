@@ -51,11 +51,23 @@
 .font-open-sans {
   font-family: 'Open Sans', sans-serif;
 }
+.font-open-sans-bold {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+}
 .font-slabo {
   font-family: 'Slabo 27px', serif;
 }
+.font-slabo-bold {
+  font-family: 'Slabo 27px', serif;
+  font-weight: bold;
+}
 .font-oswald {
   font-family: 'Oswald', sans-serif;
+}
+.font-oswald-bold {
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
 }
 @media print {
   #controls {

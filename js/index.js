@@ -19,7 +19,8 @@ if(window.localStorage) {
       },
       middle: {
         text: "1",
-        size: 50
+        size: 50,
+        position: 50
       },
       bottom: {
         text: 'Spodní text',

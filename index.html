@@ -34,7 +34,7 @@
 
       <svg_circle_text :data="top_text"></svg_circle_text>
 
-      <foreignObject x="0" y="0" width="100" height="100">
+      <foreignObject x="0" y="{{item.middle.position-50}}" width="100" height="100">
         <table v-bind:style="{ width: '100%', height: '100%' }">
           <tr>
             <td v-bind:style="{ fontSize: item.middle.size + 'px', lineHeight: '1.2', textAlign: 'center', color: '#000'}">
@@ -67,8 +67,11 @@
                 <label for="item-font">Písmo</label>
                 <select v-model="items[active].font" class="form-control" id="item-font">
                   <option value="open-sans">Open Sans</option>
+                  <option value="open-sans-bold">Open Sans Bold</option>
                   <option value="oswald">Oswald</option>
+                  <option value="oswald-bold">Oswald Bold</option>
                   <option value="slabo">Slabo</option>
+                  <option value="slabo-bold">Slabo Bold</option>
                 </select>
               </div>
             </div>
@@ -112,11 +115,20 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-6">
               <div class="form-group">
                 <label for="item-middle-size" class="normal-weight">Velikost</label>
                 <div class="input-group">
                   <input v-model="items[active].middle.size" type="number" step="0.5" class="form-control" id="item-middle-size">
+                  <div class="input-group-addon">%</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="item-middle-position" class="normal-weight">Umístění</label>
+                <div class="input-group">
+                  <input v-model="items[active].middle.position" type="number" class="form-control" id="item-middle-position">
                   <div class="input-group-addon">%</div>
                 </div>
               </div>
