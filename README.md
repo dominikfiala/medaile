@@ -5,6 +5,10 @@ Online na webu [šprtec-boskovice.cz](http://medaile.sprtec-boskovice.cz/)
 
 ![Snímek obrazovky](/screenshot.png "Snímek obrazovky")
 
+## Tipy pro použití
+- Každý text každého štítku se edituje samostatně, pečlivě navrhněte první štítek, ten následně duplikujte a upravujte již jen hlavní text
+- Pro úpravu číslených hodnot použijte klávesy šipky nahoru a dolu
+
 ## Vlastnosti
 - Možnost rozdílných průměrů a textů každého štítku
 - Duplikace štítků
@@ -15,6 +19,6 @@ Online na webu [šprtec-boskovice.cz](http://medaile.sprtec-boskovice.cz/)
 
 ## Plán
 - Otestovat a případně opravit funkčnost napříč prohlížeči
-- Přidat vertikální zarovnání hlavního textu
+- <del>Přidat vertikální zarovnání hlavního textu</del>
 - Přidat prostrkávání všech textů
-- Přidat tučné písmo
+- Přidat tučné písmo pro jednotlivé texty
