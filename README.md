@@ -20,5 +20,5 @@ Online na webu [šprtec-boskovice.cz](http://medaile.sprtec-boskovice.cz/)
 ## Plán
 - Otestovat a případně opravit funkčnost napříč prohlížeči
 - <del>Přidat vertikální zarovnání hlavního textu</del>
-- Přidat prostrkávání všech textů
+- <del>Přidat prostrkávání všech textů</del>
 - Přidat tučné písmo pro jednotlivé texty
