@@ -3,7 +3,7 @@ Webová aplikace pro návrh štítků medailí pro šprtcové a jiné soutěže 
 
 Online na webu [šprtec-boskovice.cz](http://medaile.sprtec-boskovice.cz/)
 
-![Snímek obrazovky](/screenshot.png "Snímek obrazovky")
+[Snímek obrazovky](/screenshot.png "Snímek obrazovky")
 
 ## Tipy pro použití
 - Každý text každého štítku se edituje samostatně, pečlivě navrhněte první štítek, ten následně duplikujte a upravujte již jen hlavní text
