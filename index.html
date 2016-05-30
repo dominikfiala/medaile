@@ -3,16 +3,18 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Medaile</title>
-  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700|Slabo+27px|Oswald:400,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Slabo+27px|Oswald:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <meta property="og:image" content="http://medaile.sprtec-boskovice.cz/screenshot.png" />
 </head>
 
 <body>
   <template id="svg-circle-text">
+    <svg>
     <defs>
       <path id="path-{{data.key}}" transform="rotate({{data.circle.rotate}} 50 50)" d="M 50 50
       m -{{data.circle.diam/2}}, 0
@@ -24,13 +26,14 @@
         {{data.text.text}}
       </textPath>
     </text>
+    </svg>
   </template>
 
   <template id="item-template">
-    <style type="text/css" media="print">{{print_style}}</style>
+    <style type="text/css">{{item_style}}</style>
     <svg class="font-{{item.font}} item item-{{index}} {{active ? 'active' : ''}}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" @click="makeActive(index)">
       <circle r="50" cy="50" cx="50" stroke="#000" stroke-width="0.5" fill="none" />
-      <circle r="48" cy="50" cx="50" stroke="#000" stroke-width="1" fill="none" />
+      <circle r="47" cy="50" cx="50" stroke="#000" stroke-width="1" fill="none" />
 
       <svg_circle_text :data="top_text"></svg_circle_text>
 
@@ -199,7 +202,7 @@
       </div>
     </div>
   </div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
   <script src="js/index.js"></script>
 </body>
 

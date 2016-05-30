@@ -19,7 +19,7 @@ if(window.localStorage) {
         spacing: 0
       },
       middle: {
-        text: "1",
+        text: '1',
         size: 50,
         position: 50,
         spacing: 0
@@ -35,7 +35,7 @@ if(window.localStorage) {
 }
 
 Vue.filter('nl2br', function (value) {
-  return value.replace(/\n/g, '<br>');
+  return value.replace(/\n/g, '<br>')
 })
 
 var svg_circle_text = Vue.component('svg_circle_text', {
@@ -77,8 +77,8 @@ var item = Vue.component('item', {
         }
       }
     },
-    print_style: function() {
-      return '.item-'+ this.index +' { width: '+ this.item.size +'mm; width: '+ this.item.size +'mm;}';
+    item_style: function() {
+      return '@media print { .item-'+ this.index +' { width: '+ this.item.size +'mm; height: '+ this.item.size +'mm; } } @media screen { .item-'+ this.index +' { width: '+ this.item.size * 6 +'px; height: '+ this.item.size * 6 +'px; } }'
     }
   },
   methods: {
@@ -101,7 +101,7 @@ var app = new Vue({
       this.makeActive(index + 1)
     },
     deleteItem: function(index) {
-      var confirm = window.confirm('Opravdu smazat?');
+      var confirm = window.confirm('Opravdu smazat?')
       if (confirm) {
         this.items.splice(index, 1)
         var activate = this.items[index - 1] ? index - 1 : 0

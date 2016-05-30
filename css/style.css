@@ -28,12 +28,11 @@
   }
   #app #wrap #items .item {
     border-radius: 10px;
-    width: 200px;
-    height: 200px;
     margin: 15px;
     padding: 10px;
     cursor: pointer;
     box-sizing: content-box;
+    vertical-align: middle;
   }
   #app #wrap #items .item.active {
     background: rgba(0, 0, 0, 0.1);
